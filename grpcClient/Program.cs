@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using clientStreamingMessage;
 using Grpc.Net.Client;
 using grpcMessageServer;
 using grpcServer;
@@ -39,3 +40,21 @@ while (await streameingServerMressageResult.ResponseStream.MoveNext(cancellation
 {
     System.Console.WriteLine(streameingServerMressageResult.ResponseStream.Current.Message);
 }
+
+
+Console.WriteLine("Client Streameing  =>  ");
+var clientstreamingMessaeClient = new ClientMessageStreaming.ClientMessageStreamingClient(chanel);
+var clientstreamingMessaeRequest = clientstreamingMessaeClient.SendMessage();
+for (int i = 0; i < 10; i++)
+{
+    await Task.Delay(1000);
+    clientstreamingMessaeRequest.RequestStream.WriteAsync(new ClientStreamingMessageRequest
+    {
+        Message = "Saaaaallllllaaaamammamamamm" + i,
+        Name = "Sagol"
+    });
+}
+await clientstreamingMessaeRequest.RequestStream.CompleteAsync(); // Finsh (1 ) 
+Console.WriteLine((await clientstreamingMessaeRequest.ResponseAsync).Message);
+
+

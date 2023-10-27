@@ -11,8 +11,9 @@
     <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\message.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\messageserverstreaming.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\clientstreamingmessage.proto" GrpcServices="Client" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.24.4" />
     <PackageReference Include="Grpc.Net.Client" Version="2.58.0" />

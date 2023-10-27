@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "clientStreamingMessage";
+
+package msessageclientstreaming;
+
+service ClientMessageStreaming {
+  // Sends a greeting
+  rpc SendMessage (stream ClientStreamingMessageRequest) returns (ClientStreamingMessageResponse);
+}
+
+message ClientStreamingMessageRequest {
+  string name = 1;
+  string message = 2;
+}
+
+message ClientStreamingMessageResponse {
+  string message = 1;
+}
