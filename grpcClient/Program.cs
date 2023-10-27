@@ -48,7 +48,7 @@ var clientstreamingMessaeRequest = clientstreamingMessaeClient.SendMessage();
 for (int i = 0; i < 10; i++)
 {
     await Task.Delay(1000);
-    clientstreamingMessaeRequest.RequestStream.WriteAsync(new ClientStreamingMessageRequest
+    await clientstreamingMessaeRequest.RequestStream.WriteAsync(new ClientStreamingMessageRequest
     {
         Message = "Saaaaallllllaaaamammamamamm" + i,
         Name = "Sagol"
